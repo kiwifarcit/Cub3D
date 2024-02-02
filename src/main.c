@@ -36,6 +36,18 @@ void	check_extension(char *str, t_game *game)
 		error("Error wrong extension for map file", game);
 }
 
+void	before_check_img(t_game *game)
+{
+	if (game->free_n != 0)
+		check_extension_img(game->map->path_n, game);
+	if (game->free_s != 0)
+		check_extension_img(game->map->path_s, game);
+	if (game->free_e != 0)
+		check_extension_img(game->map->path_e, game);
+	if (game->free_w != 0)
+		check_extension_img(game->map->path_w, game);
+}
+
 void	set_value(t_game *game)
 {
 	game->map->y_size = 0;
@@ -67,10 +79,7 @@ int	main(int argc, char	**argv)
 	set_value(game);
 	check_extension(argv[1], game);
 	i = parsing(game);
-	check_extension_img(game->map->path_n, game);
-	check_extension_img(game->map->path_s, game);
-	check_extension_img(game->map->path_e, game);
-	check_extension_img(game->map->path_w, game);
+	before_check_img(game);
 	check_rgb(game);
 	map(game, i);
 	
