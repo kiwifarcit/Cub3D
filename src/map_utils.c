@@ -61,7 +61,7 @@ int	check_fc(char *str, char cf, t_game *game)
 		i++;
 	}
 	if (nb != 3)
-		error("Error wrong number of arguments", game);
+		error("Error wrong number of arguments in floor/ceiling", game);
 	return (0);
 }
 

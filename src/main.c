@@ -17,6 +17,8 @@ void	check_extension_img(char *str, t_game *game)
 	int	i;
 
 	i = 0;
+	if (game->argc != 2)
+		error("Error wrong number of arguments", game);
 	while (str[i])
 		i++;
 	if (str[i - 1] != 'g' || str[i - 2] != 'n' || str[i - 3] != 'p'
