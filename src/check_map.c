@@ -29,7 +29,6 @@ void	quick_check(t_game *game)
 				pos++;
 			else if (c != '0' && c != '1' && c != ' ' && c != '\0')
 			{
-				printf("c = %c\n", c);
 				error("Error forbidden char for map", game);
 			}
 			game->map->x++;

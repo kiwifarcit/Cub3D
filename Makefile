@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = cub3d
+NAME = cub3D
 
 FILES = main \
 		get_next_line \
@@ -25,9 +25,10 @@ FILES = main \
 		check_map \
 		check_map_borders \
 		utils \
-		map_utils
+		map_utils \
+		raycasting
 
-MLX = MLX42/build/libmlx42.a -L "/Users/$$USER/.brew/opt/glfw/lib/" -lglfw -framework Cocoa -framework OpenGL -framework IOKit
+MLX = MLX42/build/libmlx42.a -L "/Users/$$USER/.brew/opt/glfw/lib/" -lglfw -lm
 
 SRC = $(addprefix src/, $(addsuffix .c, $(FILES)))
 
@@ -38,7 +39,7 @@ OBJ = $(SRC:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	gcc $(GFLAG) $(OBJ) -o $(NAME)
+	gcc $(GFLAG) $(OBJ) -o $(NAME) $(MLX)
 
 .c.o:
 	gcc $(GFLAG) -c -o $@ $< -I include

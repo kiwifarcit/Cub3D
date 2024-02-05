@@ -76,6 +76,7 @@ int	main(int argc, char	**argv)
 
 	game = malloc(sizeof(t_game));
 	game->map = malloc (sizeof(t_map));
+	game->player = malloc (sizeof(t_player));
 	game->argv = argv;
 	game->argc = argc;
 	set_value(game);
@@ -93,6 +94,10 @@ int	main(int argc, char	**argv)
 	printf("C %d,%d,%d\n", game->ceiling_r, game->ceiling_g, game->ceiling_b);
 	printf("F %d,%d,%d\n", game->floor_r, game->floor_g, game->floor_b);
 	print_map(game);
+	//player_pos(game);
+	// printf("pos y = %d || x = %d\n", game->player->y, game->player->x);
+	ft_window(game);
+
 
 
 	free(game->map->path_n);
@@ -101,5 +106,6 @@ int	main(int argc, char	**argv)
 	free(game->map->path_w);
 	freetab(game->map->map);
 	free(game->map);
+	free(game->player);
 	free(game);
 }
