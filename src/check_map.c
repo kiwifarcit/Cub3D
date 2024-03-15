@@ -12,6 +12,19 @@
 
 #include "../includes/cub3d.h"
 
+int start_pos(int pos, t_game *game, char c)
+{
+	if (c == 'N')
+		game->player->angle = M_PI / 2;
+	if (c == 'S')
+		game->player->angle = 3 * M_PI / 2;
+	if (c == 'E')
+		game->player->angle = 0;
+	if (c == 'W')
+		game->player->angle = M_PI;
+	return (pos + 1);
+}
+
 void	quick_check(t_game *game)
 {
 	int		pos;
@@ -26,7 +39,7 @@ void	quick_check(t_game *game)
 		{
 			c = game->map->map[game->map->y][game->map->x];
 			if (c == 'N' || c == 'S' || c == 'E' || c == 'W')
-				pos++;
+				pos = start_pos(pos, game, c);
 			else if (c != '0' && c != '1' && c != ' ' && c != '\0')
 			{
 				error("Error forbidden char for map", game);
